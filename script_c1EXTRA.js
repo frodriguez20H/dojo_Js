@@ -12,17 +12,9 @@ John and a friend invented a simple game where the player with the highest value
 4. EXTRA: Add a third player and now decide who wins. Hint: you will need the && operator to take decision. If you can't solve this one, just watch the solution, it's no problem :)
 */
 
-var nameGamer1;
-var nameGamer2;
-var nameGamer3;
-
-var heightnG1;
-var heightnG2;
-var heightnG3;
-
-var agenG1;
-var agenG2;
-var agenG3;
+var nameGamer1, heightnG1, agenG1;
+var nameGamer2, heightnG2, agenG2;
+var nameGamer3, heightnG3, agenG2;
 
 // Taking datas.
 
@@ -39,9 +31,14 @@ nameGamer3 = prompt('Name user 3?');
 heightnG3 = prompt (nameGamer3 + ', How tall are you? (in centimeters)');
 agenG3 = prompt ('And your age?');
 
+// Calculating scores.
+
 var scoreG1 = heightnG1 * agenG1;
 var scoreG2 = heightnG2 * agenG2;
 var scoreG3 = heightnG3 * agenG3;
+
+
+// Search winner and show. 
 
 if (scoreG1 > scoreG2 && scoreG1 >= scoreG3) {
     console.log('Contratulation!, winner is ' + nameGamer1 + '. Score=' + scoreG1);
