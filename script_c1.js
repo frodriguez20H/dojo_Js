@@ -30,8 +30,8 @@ nameGamer2 = prompt('Name user 2?');
 heightnG2 = prompt (nameGamer2 + ', How tall are you? (in centimeters)');
 agenG2 = prompt ('And your age?');
 
-var scoreG1 = heightnG1 * agenG1;
-var scoreG2 = heightnG2 * agenG2;
+var scoreG1 = heightnG1 + 5 * agenG1;
+var scoreG2 = heightnG2 + 5 * agenG2;
 
 if (scoreG1 > scoreG2) {
     console.log('Contratulation!, winner is ' + nameGamer1 + '. Score=' + scoreG1);
