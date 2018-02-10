@@ -33,10 +33,9 @@ agenG3 = prompt ('And your age?');
 
 // Calculating scores.
 
-var scoreG1 = heightnG1 * agenG1;
-var scoreG2 = heightnG2 * agenG2;
-var scoreG3 = heightnG3 * agenG3;
-
+var scoreG1 = heightnG1 + 5 * agenG1;
+var scoreG2 = heightnG2 + 5 * agenG2;
+var scoreG3 = heightnG3 + 5 * agenG3;
 
 // Search winner and show. 
 
