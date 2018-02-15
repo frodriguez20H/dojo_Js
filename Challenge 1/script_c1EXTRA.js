@@ -39,13 +39,13 @@ var scoreG3 = heightnG3 + 5 * agenG3;
 
 // Search winner and show. 
 
-if (scoreG1 > scoreG2 && scoreG1 >= scoreG3) {
+if (scoreG1 > scoreG2 && scoreG2 >= scoreG3) {
     console.log('Contratulation!, winner is ' + nameGamer1 + '. Score=' + scoreG1);
 }
-else if (scoreG2 > scoreG1 && scoreG2 >= scoreG3) {
+else if (scoreG2 > scoreG1 && scoreG1 >= scoreG3) {
     console.log('Contratulation!, winner is ' + nameGamer2 + '. Score=' + scoreG2);
 }
-else if (scoreG3 > scoreG2 && scoreG3 >= scoreG1) {
+else if (scoreG3 > scoreG2 && scoreG2 >= scoreG1) {
     console.log('Contratulation!, winner is ' + nameGamer3 + '. Score=' + scoreG3);
 }
 else {
