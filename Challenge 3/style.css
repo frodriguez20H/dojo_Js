@@ -138,8 +138,18 @@ i {
 }
 
 .btn-new { top: 45px;}
+.btn-topscore { top: 75px}
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
+
+.topScore {
+    position: absolute;
+    left: 50%;
+    top: 75px;
+    width: 100px;
+    transform: translateX(-50%);
+    display: none;
+}
 
 .dice {
     position: absolute;
