@@ -49,7 +49,11 @@ else if (scoreG3 > scoreG2 && scoreG2 >= scoreG1) {
     console.log('Contratulation!, winner is ' + nameGamer3 + '. Score=' + scoreG3);
 }
 else {
+    if (scoreG1 > score3 && scoreG2 === scoreG1)
+    console.log('Sorry, this match ends in draw.' + nameGamer1 + ' with score ' + scoreG1 + ' = ' + nameGamer2 + ' with score ' + scoreG2 + '.');
+
     console.log('Sorry, this match ends in draw.' + nameGamer1 + ' with score ' + scoreG1 + ' = ' + nameGamer2 + ' with score ' + scoreG2 + ' = ' + nameGamer3 + ' with score ' + scoreG3);
+
 }
 
 
