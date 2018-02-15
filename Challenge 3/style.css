@@ -26,6 +26,11 @@ body {
     color: #555;
 }
 
+input {
+    text-align: center;
+    display: none;
+}
+
 .wrapper {
     width: 1000px;
     position: absolute;
@@ -141,12 +146,22 @@ i {
 .btn-topscore { top: 75px}
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
+.btn-set { top: 205px;}
 
 .topScore {
     position: absolute;
     left: 50%;
-    top: 75px;
+    top: 135px;
     width: 100px;
+    transform: translateX(-50%);
+    display: none;
+}
+
+.btn-set {
+    position: absolute;
+    left: 50%;
+    top: 165px;
+    width: 80px;
     transform: translateX(-50%);
     display: none;
 }

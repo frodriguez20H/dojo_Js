@@ -9,9 +9,8 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying, prevroundScore, scoreWin;
+var scores, roundScore, activePlayer, gamePlaying, prevroundScore;
 
-var scoreWin =  document;
 init();
 
 
@@ -58,7 +57,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
         //Check if player won the game
-        if (scores[activePlayer] >= scoreWin) {
+        if (scores[activePlayer] >= document.getElementById('TopScore').value) {
             document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -69,6 +68,19 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
             nextPlayer();
         }
     }
+});
+
+document.querySelector('.btn-topscore').addEventListener('click', function(){
+    document.getElementById('TopScore').nodeValue = 100;
+    console.log(document.getElementById('TopScore').value);
+    document.getElementById('TopScore').style.display = "inline-block";
+    document.getElementById('Setted').style.display = "inline-block";
+});
+
+document.querySelector('.btn-set').addEventListener('click', function() {
+    document.getElementById('TopScore').style.display = "none";
+    document.getElementById('Setted').style.display = "none";
+    console.log(document.getElementById('TopScore').value);
 });
 
 function nextPlayer() {
