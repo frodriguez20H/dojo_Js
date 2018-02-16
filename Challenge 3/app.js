@@ -22,12 +22,18 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
 
         //1. Random number
         var dice = Math.floor(Math.random() * 6) + 1;
+        var dice2 = Math.floor(Math.random() * 6) + 1;
         console.log('Valor del dado: ' + dice);
+        console.log('Valor del dado: ' + dice2);
+
 
         //2. Display the result
         var diceDOM = document.querySelector('.dice');
+        var dice2DOM = document.querySelector('.dice2');
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
+        dice2DOM.style.display = 'block';
+        dice2DOM.src = 'dice2-' + dice2 + '.png';
 
         //3. Update the round score if the rolled number was NOT a 1
         if (prevroundScore === 6 && dice === 6) {
