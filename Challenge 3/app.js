@@ -17,7 +17,7 @@ init();
 document.querySelector('.btn-roll').addEventListener('click', function () {
     if (gamePlaying) {
         //Save previous current score.
-        
+        document.querySelector('.btn-topscore').style.display = "none";
         console.log('Parametro entregado: ' + prevroundScore);
 
         //1. Random number
@@ -36,15 +36,15 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         dice2DOM.src = 'dice-' + dice2 + '.png';
 
         //3. Update the round score if the rolled number was NOT a 1
-        if (prevroundScore === 6 && dice === 6) {
+        if (prevroundScore === 6 && dice === 6 || dice2 === 6 && dice === 6) {
             document.querySelector('#score-' + activePlayer).textContent = 0;
             console.log ('## Puntuación a 0. ##')
             dice = 0;
             nextPlayer();
         }
-        else if (dice !== 1){
+        else if (dice !== 1 && dice2 !== 1){
             //Add score
-            roundScore += dice;
+            roundScore += dice + dice2;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
         } else {
             //Next player
@@ -66,6 +66,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         if (scores[activePlayer] >= document.getElementById('TopScore').value) {
             document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
+            document.querySelector('.dice2').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
             gamePlaying = false;
@@ -109,6 +110,10 @@ function init() {
     gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.dice2').style.display = 'none';
+    document.querySelector('.btn-topscore').style.display = "inline-block";
+
+
 
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
