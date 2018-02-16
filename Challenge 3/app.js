@@ -24,7 +24,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         var dice = Math.floor(Math.random() * 6) + 1;
         var dice2 = Math.floor(Math.random() * 6) + 1;
         console.log('Valor del dado: ' + dice);
-        console.log('Valor del dado: ' + dice2);
+        console.log('Valor del dado2: ' + dice2);
 
 
         //2. Display the result
@@ -36,8 +36,9 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         dice2DOM.src = 'dice-' + dice2 + '.png';
 
         //3. Update the round score if the rolled number was NOT a 1
-        if (prevroundScore === 6 && dice === 6 || dice2 === 6 && dice === 6) {
-            document.querySelector('#score-' + activePlayer).textContent = 0;
+        if (dice2 === 6 && dice === 6) {
+            scores[activePlayer] = 0;
+            document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
             console.log ('## Puntuación a 0. ##')
             dice = 0;
             nextPlayer();
@@ -48,6 +49,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
         } else {
             //Next player
+            console.log('Salió un 1. Next!')
             nextPlayer();
         }
         return prevroundScore = dice;
@@ -80,15 +82,13 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 document.querySelector('.btn-topscore').addEventListener('click', function(){
     document.getElementById('TopScore').nodeValue = 100;
     console.log(document.getElementById('TopScore').value);
-    document.getElementById('TopScore').style.display = "inline-block";
-    document.getElementById('Setted').style.display = "inline-block";
+    if (document.getElementById('TopScore').style.display === "inline-block") {
+        document.getElementById('TopScore').style.display = "none";
+    } else {
+        document.getElementById('TopScore').style.display = "inline-block";
+    }
 });
 
-document.querySelector('.btn-set').addEventListener('click', function() {
-    document.getElementById('TopScore').style.display = "none";
-    document.getElementById('Setted').style.display = "none";
-    console.log(document.getElementById('TopScore').value);
-});
 
 function nextPlayer() {
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
@@ -99,6 +99,7 @@ function nextPlayer() {
 
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
+    console.log('Le toca a ' + activePlayer +'\n');
 }
 
 document.querySelector('.btn-new').addEventListener('click', init);
