@@ -18,7 +18,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     if (gamePlaying) {
         //Save previous current score.
         document.querySelector('.btn-topscore').style.display = "none";
-        console.log('Parametro entregado: ' + prevroundScore);
+        //console.log('Parametro entregado: ' + prevroundScore);
 
         //1. Random number
         var dice = Math.floor(Math.random() * 6) + 1;
@@ -39,7 +39,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         if (dice2 === 6 && dice === 6) {
             scores[activePlayer] = 0;
             document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-            console.log ('## Puntuación a 0. ##')
+            console.log ('## Puntuación a 0. ## Next! \n')
             dice = 0;
             nextPlayer();
         }
@@ -49,10 +49,10 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
         } else {
             //Next player
-            console.log('Salió un 1. Next!')
+            console.log('Salió un 1. Next!\n')
             nextPlayer();
         }
-        return prevroundScore = dice;
+        //return prevroundScore = dice;   <- Se usaba para un solo dado y dos 6 seguidos.
     }
 });
 
