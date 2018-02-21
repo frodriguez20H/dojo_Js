@@ -32,7 +32,7 @@ c) correct answer (I would use a number for this)
 7. Generarlo como funcion privada. (Consultar videos).
 */
 
-var QuestionBuilder = ̣function(question, answers, correct) {
+var QuestionBuilder = function(question, answers, correct) {
     this.question = question;
     this.answers = answers;
     this.correct = correct;
