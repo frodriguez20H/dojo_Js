@@ -90,9 +90,11 @@ function quest(arrayq){
     console.log('Respuesta correcta: ' + arrayq[postq].correct);
     console.log('Respuesta dada= '+ answer);
     alert('TEST ALERT!');
-    if (answer === arrayq[postq].correct){
+    if (answers[answer] == arrayq[postq].correct){
         console.log('CORRECTO.');
-        alert('Correct');
+        alert('Correct!');
+    } else {
+        alert('No es correcto. Intentalo otra vez.');
     }
 }
 
