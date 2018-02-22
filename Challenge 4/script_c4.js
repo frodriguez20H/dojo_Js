@@ -48,14 +48,14 @@ var quest1 = new QuestionBuilder('¿Javascript es un lenguaje de programación?'
 var quest2 = new QuestionBuilder('¿De qué color es el caballo blanco de Santiago?', ['Trasparente', 'Negro', 'Blanco'], 'Blanco');
 var quest3 = new QuestionBuilder('¿Qué pokemon usaría Yune?', ['Charmander', 'Pikachu', 'Saiduck', 'No sé'], 'Saiduck');
 var quest4 = new QuestionBuilder('¿Entre tres caminos a elegir, cúal es el más corto?', ['El trayecto', 'El camino','La Línea recta'], 'La Línea recta');
-var quest5 = new QuestionBuilder('¿Are you sure need lear Javascript?', ['No', 'Yes', 'I\'m no sure', 'No idea'])
+var quest5 = new QuestionBuilder('¿Are you sure need learn Javascript?', ['No', 'Yes', 'I\'m no sure', 'No idea'])
 
 var questions = [quest1, quest2, quest3, quest4, quest5];
 
 console.log(quest1);
 console.log(questions);
 
-function quest(arrayq){
+(function quest(arrayq){
     var postq = Math.floor(Math.random() * 5);  // Random position in array questions.
     var answers = [];
     var text = '';
@@ -69,7 +69,7 @@ function quest(arrayq){
     text = arrayq[postq].question + '\n';
     console.log('Tamaño array respuestas: ' + answers.length);
     for (var i = 0; i < answers.length; i++){
-            console.log('array respuestas: ' + answers[i])
+            console.log('Array respuesta ' + i +': ' + answers[i])
             text = text + i + ' => ' + answers[i] + '\n';
         }
     console.log('Contenido de text = ' + text);
@@ -89,13 +89,10 @@ function quest(arrayq){
     var answer = prompt(text);
     console.log('Respuesta correcta: ' + arrayq[postq].correct);
     console.log('Respuesta dada= '+ answer);
-    alert('TEST ALERT!');
     if (answers[answer] == arrayq[postq].correct){
         console.log('CORRECTO.');
-        alert('Correct!');
+        alert('¡Correcto!');
     } else {
         alert('No es correcto. Intentalo otra vez.');
     }
-}
-
-quest(questions);
+})(questions);
