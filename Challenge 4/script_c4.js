@@ -48,9 +48,10 @@ var questions = [quest1, quest2, quest3, quest4, quest5];
 
 (function quest(arrayq){
     var text = '';
+    var end = false;
     var answers = [];
     var score = 0;
-    while (text != 'exit'){
+    while (end != true){
         var postq = Math.floor(Math.random() * 5);  // Random position in array questions.
         answers = arrayq[postq].answers;
         text = arrayq[postq].question + '\n';
@@ -59,16 +60,20 @@ var questions = [quest1, quest2, quest3, quest4, quest5];
             }
         text = text + '----------' + '\n' + 'Score: ' + score;
         var answer = prompt(text);
-        if (answers[answer] == arrayq[postq].correct) {
-            console.log('CORRECTO.');
-            alert('¡Correcto!');
-            score += 1;
-            console.log('Score =' + score);
-        } else {
-            alert('No es correcto. Intentalo otra vez.');
+        if (answer === 'exit'){
+            console.log('End Game.');
+            end = true;
+        }
+        else {
+            if (answers[answer] == arrayq[postq].correct){
+                console.log('CORRECTO.');
+                alert('¡Correcto!');
+                score += 1;
+            } else {
+                alert('No es correcto. Intentalo otra vez.');
+            }
         }
     }
-    console.log('End Game.');
 })(questions);
 
 /*
