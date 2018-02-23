@@ -47,29 +47,28 @@ var quest5 = new QuestionBuilder('¿Are you sure need learn Javascript?', ['No',
 var questions = [quest1, quest2, quest3, quest4, quest5];
 
 (function quest(arrayq){
-    var postq = Math.floor(Math.random() * 5);  // Random position in array questions.
-    var answers = [];
     var text = '';
-    var score;
-    answers = arrayq[postq].answers;
-    text = arrayq[postq].question + '\n';
-    for (var i = 0; i < answers.length; i++){
-            text = text + i + ' => ' + answers[i] + '\n';
-        }
-    text = text + '----------' + '\n' + 'Score: ' + score;
-    var answer = prompt(text);
-    if (answer === 'exit'){
-        console.log('End Game.')
-    }
-    else {
-        if (answers[answer] == arrayq[postq].correct){
+    var answers = [];
+    var score = 0;
+    while (text != 'exit'){
+        var postq = Math.floor(Math.random() * 5);  // Random position in array questions.
+        answers = arrayq[postq].answers;
+        text = arrayq[postq].question + '\n';
+        for (var i = 0; i < answers.length; i++){
+                text = text + i + ' => ' + answers[i] + '\n';
+            }
+        text = text + '----------' + '\n' + 'Score: ' + score;
+        var answer = prompt(text);
+        if (answers[answer] == arrayq[postq].correct) {
             console.log('CORRECTO.');
             alert('¡Correcto!');
             score += 1;
+            console.log('Score =' + score);
         } else {
             alert('No es correcto. Intentalo otra vez.');
         }
     }
+    console.log('End Game.');
 })(questions);
 
 /*
