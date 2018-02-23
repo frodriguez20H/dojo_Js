@@ -42,7 +42,7 @@ var quest1 = new QuestionBuilder('¿Javascript es un lenguaje de programación?'
 var quest2 = new QuestionBuilder('¿De qué color es el caballo blanco de Santiago?', ['Trasparente', 'Negro', 'Blanco'], 'Blanco');
 var quest3 = new QuestionBuilder('¿Qué pokemon usaría Yune?', ['Charmander', 'Pikachu', 'Saiduck', 'No sé'], 'Saiduck');
 var quest4 = new QuestionBuilder('¿Entre tres caminos a elegir, cúal es el más corto?', ['El trayecto', 'El camino','La Línea recta'], 'La Línea recta');
-var quest5 = new QuestionBuilder('¿Are you sure need learn Javascript?', ['No', 'Yes', 'I\'m no sure', 'No idea'])
+var quest5 = new QuestionBuilder('¿Are you sure need learn Javascript?', ['No', 'Yes', 'I\'m no sure', 'No idea'], 'Yes')
 
 var questions = [quest1, quest2, quest3, quest4, quest5];
 
@@ -50,17 +50,32 @@ var questions = [quest1, quest2, quest3, quest4, quest5];
     var postq = Math.floor(Math.random() * 5);  // Random position in array questions.
     var answers = [];
     var text = '';
+    var score;
     answers = arrayq[postq].answers;
     text = arrayq[postq].question + '\n';
     for (var i = 0; i < answers.length; i++){
             text = text + i + ' => ' + answers[i] + '\n';
         }
-
+    text = text + '----------' + '\n' + 'Score: ' + score;
     var answer = prompt(text);
-    if (answers[answer] == arrayq[postq].correct){
-        console.log('CORRECTO.');
-        alert('¡Correcto!');
-    } else {
-        alert('No es correcto. Intentalo otra vez.');
+    if (answer === 'exit'){
+        console.log('End Game.')
+    }
+    else {
+        if (answers[answer] == arrayq[postq].correct){
+            console.log('CORRECTO.');
+            alert('¡Correcto!');
+            score += 1;
+        } else {
+            alert('No es correcto. Intentalo otra vez.');
+        }
     }
 })(questions);
+
+/*
+--- Expert level ---
+8. After you display the result, display the next random question, so that the game never ends (Hint: write a function for this and call it right after displaying the result)
+9. Be careful: after Task 8, the game literally never ends. So include the option to quit the game if the user writes 'exit' instead of the answer. In this case, DON'T call the function from task 8.
+10. Track the user's score to make the game more fun! So each time an answer is correct, add 1 point to the score (Hint: I'm going to use the power of closures for this, but you don't have to, just do this with the tools you feel more comfortable at this point).
+11. Display the score in the console. Use yet another method for this.
+*/
