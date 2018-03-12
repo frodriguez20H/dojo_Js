@@ -50,7 +50,7 @@ class Park extends Property { // Subclase para Parkes
     }
 
     densityTrees() { // Calcula la densidad del parque.
-        return this.trees / this.area;
+        return parseFloat(this.trees / this.area).toFixed(2);
     }
 }
 
@@ -78,11 +78,27 @@ class Street extends Property { // Subclase para calles
 
 function averagePark(parks) {
     let numparks = parks.length;
-    let sumparks = parks.reduce((sum,cur) => sum + cur.ageOfPark(),0);
-    let aveparks = sumparks / numparks;
-    return console.log(`Avergange of Parks is ${aveparks}.`);
+    let sumparks = parseFloat(parks.reduce((sum,cur) => sum + cur.ageOfPark(),0)).toFixed(2);
+    let aveparks = parseFloat(sumparks / numparks).toFixed(2);
+    return console.log(`Averange of Parks is ${aveparks}.`);
 }
 
+function averageStreets(streets) {
+    let numstreets = streets.length;
+    let sumkms = parseFloat(streets.reduce((sum, cur)  => sum + cur.longStreet, 0)).toFixed(2);
+    let avestreets = parseFloat(sumkms / numstreets).toFixed(2);
+    return console.log(`Averange of long streets is ${avestreets}Kms and total is ${sumkms}Kms.`);
+}
+
+function showProperty(Property) {
+    Property.map(
+            pro => {console.log(`This property is a ${pro.type} with name \"${pro.name}\". Was builded in ${pro.yearOfBuilded}.`);
+            if(pro.type === 'Park'){
+                console.log(`Density of tree is ${pro.densityTrees()}.`)
+            } else if (pro.type === 'Street')  {
+                console.log(`Class this stree is ${pro.classifyStreet()}.`)}
+    }
+)};
 
 //¿Hay forma de copiar valores del constructor inicial?
 
@@ -92,6 +108,15 @@ const park3 = new Park('Park', 'Recreative Park', 1999, 600, 6000);
 const park4 = new Park('Park', 'New Park', 2010, 20000, 10000);
 
 const street1 = new Street('Street', 'Main Street', 1918, 20);
-const street2 = new Street('Street', 'Diagonal Street', 1935, 30, 'big');
-const street3 = new Street('Street', 'Secondary Street', 1998, 5, 'small');
+const street2 = new Street('Street', 'Diagonal Street', 1935, 30, 4);
+const street3 = new Street('Street', 'Secondary Street', 1998, 5, 2);
+
+let streets = [street1, street2, street3];
+let parks = [park1, park2, park3, park4];
+
+showProperty(streets);
+averageStreets(streets);
+console.log('--------------------------------------------\n');
+showProperty(parks);
+averagePark(parks);
 
