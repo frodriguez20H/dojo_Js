@@ -39,21 +39,37 @@ class Property {
 }
 
 class Park extends Property { // Subclase para Parkes
-    constructor(type, name, yearOfBuilded, trees, area) {
+    constructor(type = 'Park', name, yearOfBuilded, trees, area) {
         super(type, name, yearOfBuilded);
         this.trees = trees;
         this.area = area;
     }
 
     ageOfPark() {  // Calcula la edad del parque
-        let age;
-        age = new Date().getFullYear() - this.yearOfBuilded;
-        return age;
+        return new Date().getFullYear() - this.yearOfBuilded;
     }
 
     densityTrees() { // Calcula la densidad del parque.
-        let den;
-        den = this.trees / this.area;
-        return den;
+        return this.trees / this.area;
     }
 }
+
+class Street extends Property { // Subclase para calles
+    constructor(type  = 'Street', name, yearOfBuilded, longStreet, classStreet = 'normal') {
+        super(type, name, yearOfBuilded);
+        this.longStreet = longStreet;
+        this.classStreet = classStreet;
+    }
+}
+
+//¿Hay forma de copiar valores del constructor inicial?
+
+const park1 = new Park('Park', 'Natural Park', 1940, 10000, 6000);
+const park2 = new Park('Park', 'Old Park', 1920, 5000, 5000);
+const park3 = new Park('Park', 'Recreative Park', 1999, 600, 6000);
+const park4 = new Park('Park', 'New Park', 2010, 20000, 10000);
+
+const street1 = new Street('Street', 'Main Street', 1918, 20);
+const street2 = new Street('Street', 'Diagonal Street', 1935, 30, 'big');
+const street3 = new Street('Street', 'Secondary Street', 1998, 5, 'small');
+
