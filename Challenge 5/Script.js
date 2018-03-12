@@ -92,11 +92,14 @@ function averageStreets(streets) {
 
 function showProperty(Property) {
     Property.map(
-            pro => {console.log(`This property is a ${pro.type} with name \"${pro.name}\". Was builded in ${pro.yearOfBuilded}.`);
+            pro => {console.log(`\nThis property is a ${pro.type} with name \"${pro.name}\". Was builded in ${pro.yearOfBuilded}.`);
             if(pro.type === 'Park'){
-                console.log(`Density of tree is ${pro.densityTrees()}.`)
+                console.log(`Density of tree is ${pro.densityTrees()}.`);
+                if(pro.trees >= 1000){
+                    console.log(`${pro.name} has more than 1000 trees inside.`);
+                };
             } else if (pro.type === 'Street')  {
-                console.log(`Class this stree is ${pro.classifyStreet()}.`)}
+                console.log(`Class this street is ${pro.classifyStreet()}.`);}
     }
 )};
 
@@ -114,9 +117,8 @@ const street3 = new Street('Street', 'Secondary Street', 1998, 5, 2);
 let streets = [street1, street2, street3];
 let parks = [park1, park2, park3, park4];
 
-showProperty(streets);
-averageStreets(streets);
-console.log('--------------------------------------------\n');
 showProperty(parks);
 averagePark(parks);
-
+console.log('--------------------------------------------\n');
+showProperty(streets);
+averageStreets(streets);
