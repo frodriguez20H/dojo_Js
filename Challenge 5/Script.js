@@ -55,17 +55,39 @@ class Park extends Property { // Subclase para Parkes
 }
 
 class Street extends Property { // Subclase para calles
-    constructor(type  = 'Street', name, yearOfBuilded, longStreet, classStreet = 'normal') {
+    constructor(type  = 'Street', name, yearOfBuilded, longStreet, range = 3) {
         super(type, name, yearOfBuilded);
         this.longStreet = longStreet;
-        this.classStreet = classStreet;
+        this.range = range;
+    }
+
+    classifyStreet () {
+        const range = new Map();
+        range.set(1, 'tiny');
+        range.set(2, 'small');
+        range.set(3, 'normal');
+        range.set(4, 'big');
+        range.set(5, 'huge');
+        console.log(`${this.name}, build in ${this.yearOfBuilded}, is a ${range.get(this.range)} street.`);
+    }
+
+    lengthStreet() {
+        return console.log(`Street: ${this.name}, has a ${this.longStreet} kms.`);
     }
 }
+
+function averagePark(parks) {
+    let numparks = parks.length;
+    let sumparks = parks.reduce((sum,cur) => sum + cur.ageOfPark(),0);
+    let aveparks = sumparks / numparks;
+    return console.log(`Avergange of Parks is ${aveparks}.`);
+}
+
 
 //¿Hay forma de copiar valores del constructor inicial?
 
 const park1 = new Park('Park', 'Natural Park', 1940, 10000, 6000);
-const park2 = new Park('Park', 'Old Park', 1920, 5000, 5000);
+const park2 = new Park('Park', 'Old Park', 1920, 500, 5000);
 const park3 = new Park('Park', 'Recreative Park', 1999, 600, 6000);
 const park4 = new Park('Park', 'New Park', 2010, 20000, 10000);
 
